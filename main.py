@@ -22,10 +22,10 @@ def callback_message_menu(callback):
         markup.row(btn3)
 
         bot.delete_message(chat_id, callback.message.message_id)
-        try:
-            bot.delete_message(chat_id, callback.message.message_id - 1)
-        except Exception as e:
-            print(f"Error deleting message: {e}")
+        # try:
+        #     bot.delete_message(chat_id, callback.message.message_id - 1)
+        # except Exception as e:
+        #     print(f"Error deleting message: {e}")
         img = "start_img.jpg"
         with open(img, 'rb') as photo:
             bot.send_photo(callback.message.chat.id, photo, caption='*Что вас интересует сейчас?*', reply_markup=markup,
@@ -39,10 +39,13 @@ def callback_message_menu(callback):
         markup.row(btn_link)
 
         bot.delete_message(chat_id, callback.message.message_id)
-        bot.send_message(chat_id, '⚡ <b>Что вы найдёте у нас?</b>\n\n'
-                                  '🔥 <b>Карточки с собаньками:</b> небольшие информационные слайды, которые можно «свайпать» и подбирать собаку, подходящую под все необходимые параметры\n\n '
-                                  '🔥 <b>Раздел с полезными материалами:</b> большое количество подкастов, статей и курсов от наших специалистов\n\n'
-                                  '🔥 <b>Последние новости и анонсы разных мероприятий:</b> в нашем приложении Вы всегда будете знать, кто же стал счастливчиком и отправился на мягкий диван, а также всегда сможете поучаствовать в наших активностях, которых будет очень много.\n\n'
+        bot.send_message(chat_id, '⚡ <strong>Что вы найдёте у нас?</strong>\n\n'
+                                  '🔥 <b>Карточки с собаньками:</b>\n'
+                                  'небольшие информационные слайды, которые можно «свайпать» и подбирать собаку, подходящую под все необходимые параметры\n\n '
+                                  '🔥 <b>Раздел с полезными материалами:</b>\n'
+                                  'большое количество подкастов, статей и курсов от наших специалистов\n\n'
+                                  '🔥 <b>Последние новости и анонсы разных мероприятий:</b>\n'
+                                  'в нашем приложении Вы всегда будете знать, кто же стал счастливчиком и отправился на мягкий диван, а также всегда сможете поучаствовать в наших активностях, которых будет очень много.\n\n'
                                   '<b>Но это еще далеко не все, поэтому подпишитесь на канал, чтобы не пропустить ничего важного, и пригласите друзей — вместе мы сможем помочь большему количеству животных!</b>',
                          reply_markup=markup, parse_mode='html')
 
@@ -76,6 +79,16 @@ def callback_message_menu(callback):
             age = row[2]
             location = row[3]
             link = row[4]
+            char = row[6]
+            interact_1 = row[7]
+            interact_2 = row[8]
+            size = row[9]
+            weight = row[10]
+            fur_type = row[11]
+            breed = row[12]
+            energ = row[13]
+            training = row[14]
+            fears = row[15]
 
         btn_back = types.InlineKeyboardButton("⬅️ Назад", callback_data='back_to_menu')
         btn_link = types.InlineKeyboardButton("🔗 Контакты", url='https://vk.com/vruchke')
@@ -84,10 +97,20 @@ def callback_message_menu(callback):
         markup.row(btn_link)
         bot.send_message(
             chat_id,
-            f'<b>Пол:</b> {sex}\n\n'
+            f'<strong>Пол:</strong> {sex}\n\n'
             f'<b>Возраст:</b> {age}\n\n'
-            f'<b>Адрес приюта:</b> {location}\n\n'
-            f'<b>Мед. карта:</b> {link}\n\n',
+            f'<b>размер:</b> {size}\n\n'
+            f'<b>вес:</b> {weight}\n\n'
+            f'<b>характер:\n</b>{char}\n\n'
+            f'<b>Взаимодействие с людьми и детьми:</b> {interact_1}\n\n'
+            f'<b>Взаимодействие с другими животными:</b> {interact_2}\n\n'
+            f'<b>Медицинские показания:</b> {link}\n\n'
+            f'<b>тип шерсти:\n</b>{fur_type}\n\n'
+            f'<b>порода:</b> {breed}\n\n'
+            f'<b>активность:</b> {energ}\n\n'
+            f'<b>уровень дрессировки:</b> {training}\n\n'
+            f'<b>боязни:</b> {fears}\n\n'
+            f'<b>Адрес приюта:</b> {location}\n\n',
             reply_markup=markup, parse_mode='html')
 
     elif callback.data == 'favorites':
@@ -111,10 +134,10 @@ def callback_message_menu(callback):
         markup.row(btn1, btn2)
         markup.row(btn3)
 
-        try:
-            bot.delete_message(chat_id, callback.message.message_id - 1)
-        except Exception as e:
-            print(f"Error deleting message: {e}")
+        # try:
+        #     bot.delete_message(chat_id, callback.message.message_id - 1)
+        # except Exception as e:
+        #     print(f"Error deleting message: {e}")
         bot.delete_message(chat_id, callback.message.message_id)
         reader_counter = 1
 
@@ -177,23 +200,43 @@ def more_favorite(callback):
     with open('DataSet.csv', 'r', encoding='cp1251') as file:
         row = list(csv.reader(file))[reader_counter]
 
-    sex = row[1]
-    age = row[2]
-    location = row[3]
-    link = row[4]
-    btn_back = types.InlineKeyboardButton("Назад", callback_data='back_to_menu')
+        sex = row[1]
+        age = row[2]
+        location = row[3]
+        link = row[4]
+        char = row[6]
+        interact_1 = row[7]
+        interact_2 = row[8]
+        size = row[9]
+        weight = row[10]
+        fur_type = row[11]
+        breed = row[12]
+        energ = row[13]
+        training = row[14]
+        fears = row[15]
+
+
+    btn_back = types.InlineKeyboardButton("⬅️ Назад", callback_data='back_to_menu')
     btn_link = types.InlineKeyboardButton("🔗 Контакты", url='https://vk.com/vruchke')
     markup = types.InlineKeyboardMarkup()
     markup.row(btn_back)
     markup.row(btn_link)
-
-    bot.delete_message(chat_id, callback.message.message_id)
     bot.send_message(
         chat_id,
-        f'<b>Пол:</b> {sex}\n\n'
+        f'<strong>Пол:</strong> {sex}\n\n'
         f'<b>Возраст:</b> {age}\n\n'
-        f'<b>Адрес приюта:</b> {location}\n\n'
-        f'<b>Мед. карта:</b> {link}\n\n',
+        f'<b>размер:</b> {size}\n\n'
+        f'<b>вес:</b> {weight}\n\n'
+        f'<b>характер:\n</b>{char}\n\n'
+        f'<b>Взаимодействие с людьми и детьми:</b> {interact_1}\n\n'
+        f'<b>Взаимодействие с другими животными:</b> {interact_2}\n\n'
+        f'<b>Медицинские показания:</b> {link}\n\n'
+        f'<b>тип шерсти:\n</b>{fur_type}\n\n'
+        f'<b>порода:</b> {breed}\n\n'
+        f'<b>активность:</b> {energ}\n\n'
+        f'<b>уровень дрессировки:</b> {training}\n\n'
+        f'<b>боязни:</b> {fears}\n\n'
+        f'<b>Адрес приюта:</b> {location}\n\n',
         reply_markup=markup, parse_mode='html')
 
 
