@@ -97,19 +97,19 @@ def callback_message_menu(callback):
         markup.row(btn_link)
         bot.send_message(
             chat_id,
-            f'<strong>Пол:</strong> {sex}\n\n'
-            f'<b>Возраст:</b> {age}\n\n'
-            f'<b>размер:</b> {size}\n\n'
-            f'<b>вес:</b> {weight}\n\n'
-            f'<b>характер:\n</b>{char}\n\n'
+            f'<strong>Пол:</strong> {sex.capitalize()}\n\n'
+            f'<b>Возраст:</b> {age.capitalize()}\n\n'
+            f'<b>Размер:</b> {size}\n\n'
+            f'<b>Вес:</b> {weight}\n\n'
+            f'<b>Характер:\n</b>{char}\n\n'
             f'<b>Взаимодействие с людьми и детьми:</b> {interact_1}\n\n'
             f'<b>Взаимодействие с другими животными:</b> {interact_2}\n\n'
             f'<b>Медицинские показания:</b> {link}\n\n'
-            f'<b>тип шерсти:\n</b>{fur_type}\n\n'
-            f'<b>порода:</b> {breed}\n\n'
-            f'<b>активность:</b> {energ}\n\n'
-            f'<b>уровень дрессировки:</b> {training}\n\n'
-            f'<b>боязни:</b> {fears}\n\n'
+            f'<b>Тип шерсти:\n</b>{fur_type}\n\n'
+            f'<b>Порода:</b> {breed}\n\n'
+            f'<b>Активность:</b> {energ}\n\n'
+            f'<b>Уровень дрессировки:</b> {training}\n\n'
+            f'<b>Боязни:</b> {fears}\n\n'
             f'<b>Адрес приюта:</b> {location}\n\n',
             reply_markup=markup, parse_mode='html')
 
@@ -225,17 +225,17 @@ def more_favorite(callback):
         chat_id,
         f'<strong>Пол:</strong> {sex}\n\n'
         f'<b>Возраст:</b> {age}\n\n'
-        f'<b>размер:</b> {size}\n\n'
-        f'<b>вес:</b> {weight}\n\n'
-        f'<b>характер:\n</b>{char}\n\n'
+        f'<b>Размер:</b> {size}\n\n'
+        f'<b>Вес:</b> {weight}\n\n'
+        f'<b>Характер:\n</b>{char}\n\n'
         f'<b>Взаимодействие с людьми и детьми:</b> {interact_1}\n\n'
         f'<b>Взаимодействие с другими животными:</b> {interact_2}\n\n'
         f'<b>Медицинские показания:</b> {link}\n\n'
-        f'<b>тип шерсти:\n</b>{fur_type}\n\n'
-        f'<b>порода:</b> {breed}\n\n'
-        f'<b>активность:</b> {energ}\n\n'
-        f'<b>уровень дрессировки:</b> {training}\n\n'
-        f'<b>боязни:</b> {fears}\n\n'
+        f'<b>Тип шерсти:\n</b>{fur_type}\n\n'
+        f'<b>Порода:</b> {breed}\n\n'
+        f'<b>Активность:</b> {energ}\n\n'
+        f'<b>Уровень дрессировки:</b> {training}\n\n'
+        f'<b>Боязни:</b> {fears}\n\n'
         f'<b>Адрес приюта:</b> {location}\n\n',
         reply_markup=markup, parse_mode='html')
 
